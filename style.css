@@ -1,0 +1,708 @@
+/* =============================================
+   THE OTHER SIDE OF NORMAL — SRD Stylesheet
+   Theme: Lite Modern Horror / Urban Fantasy
+   ============================================= */
+
+/* System fonts — no external dependencies */
+
+/* ---- Reset & Base ---- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg:           #0d0d0d;
+  --bg-card:      #141414;
+  --bg-elevated:  #1a1a1a;
+  --border:       #242424;
+  --border-light: #2e2e2e;
+  --text:         #ddd8cc;
+  --text-muted:   #7a7570;
+  --text-dim:     #555;
+  --heading:      #f0ebe0;
+  --accent:       #9b2335;
+  --accent-hover: #c02a40;
+  --accent-muted: #3d0f16;
+  --gold:         #c8a96e;
+  --gold-muted:   #6b5630;
+  --link:         #b8956e;
+  --link-hover:   #d4b08c;
+  --nav-h:        64px;
+  --content-w:    760px;
+  --wide-w:       1000px;
+  --radius:       4px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.75;
+  min-height: 100vh;
+}
+
+/* ---- Typography ---- */
+h1, h2, h3, h4, h5 {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  color: var(--heading);
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+h1 { font-size: 2.4rem; letter-spacing: -0.01em; }
+h2 { font-size: 1.75rem; margin-top: 2.5rem; margin-bottom: 0.75rem; }
+h3 { font-size: 1.3rem; margin-top: 2rem; margin-bottom: 0.5rem; color: var(--gold); }
+h4 { font-size: 1.05rem; margin-top: 1.5rem; margin-bottom: 0.4rem; color: var(--text); font-style: italic; }
+h5 { font-size: 0.95rem; margin-top: 1.25rem; margin-bottom: 0.3rem; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.8rem; color: var(--text-muted); }
+
+p { margin-bottom: 1.1rem; }
+
+a {
+  color: var(--link);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+a:hover { color: var(--link-hover); text-decoration: underline; }
+
+strong { color: var(--heading); font-weight: 500; }
+em { font-style: italic; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2.5rem 0;
+}
+
+/* Decorative section divider */
+hr.section-rule {
+  border: none;
+  text-align: center;
+  margin: 3rem 0;
+  overflow: visible;
+  position: relative;
+}
+hr.section-rule::after {
+  content: '✦';
+  position: absolute;
+  top: -0.65em;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--accent);
+  font-size: 0.85rem;
+  background: var(--bg);
+  padding: 0 1rem;
+}
+hr.section-rule::before {
+  content: '';
+  display: block;
+  border-top: 1px solid var(--border);
+  width: 100%;
+  margin-top: 0.6em;
+}
+
+/* ---- Navigation ---- */
+nav.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #0d0d0d;
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  max-width: var(--wide-w);
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  min-height: var(--nav-h);
+}
+
+.nav-title {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--heading);
+  text-decoration: none;
+  white-space: nowrap;
+  margin-right: 2rem;
+}
+.nav-title:hover { color: var(--gold); text-decoration: none; }
+
+.nav-title span {
+  color: var(--accent);
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  list-style: none;
+  row-gap: 0.15rem;
+  padding: 0.65rem 0;
+}
+
+.nav-links a {
+  display: block;
+  padding: 0.4rem 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+  transition: color 0.15s ease;
+  text-decoration: none;
+}
+.nav-links a:hover,
+.nav-links a.active { color: var(--heading); }
+.nav-links a.support-link {
+  color: var(--gold);
+  border: 1px solid var(--gold-muted);
+  border-radius: var(--radius);
+  margin-left: 0.75rem;
+}
+.nav-links a.support-link:hover {
+  background: var(--gold-muted);
+  color: var(--gold);
+}
+
+/* ---- Layout ---- */
+.page-wrapper {
+  max-width: var(--content-w);
+  margin: 0 auto;
+  padding: 3rem 2rem 5rem;
+}
+
+.page-wrapper.wide {
+  max-width: var(--wide-w);
+}
+
+/* ---- Page Header ---- */
+.page-header {
+  margin-bottom: 3rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.page-header .eyebrow {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  font-family: "Courier New", Courier, monospace;
+  margin-bottom: 0.75rem;
+}
+
+.page-header h1 {
+  margin-bottom: 0.5rem;
+}
+
+.page-header .subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+/* ---- Section Anchors ---- */
+.section {
+  margin-bottom: 3rem;
+}
+
+.section-anchor {
+  display: block;
+  height: calc(var(--nav-h) + 1rem);
+  margin-top: calc(-1 * (var(--nav-h) + 1rem));
+  pointer-events: none;
+  visibility: hidden;
+}
+
+/* ---- Tables ---- */
+.table-wrapper {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+th {
+  background: var(--bg-elevated);
+  color: var(--heading);
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-weight: 600;
+  text-align: left;
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--accent-muted);
+  font-size: 0.85rem;
+}
+
+td {
+  padding: 0.55rem 1rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+
+/* ---- SFX Blocks ---- */
+.sfx-block {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  padding: 1.1rem 1.25rem;
+  margin: 0.75rem 0;
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.sfx-name {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.8rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.3rem;
+}
+
+.sfx-block p {
+  margin-bottom: 0;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+/* Limit block — gold accent */
+.sfx-block.limit {
+  border-left-color: var(--gold);
+}
+.sfx-block.limit .sfx-name {
+  color: var(--gold);
+}
+
+/* ---- Sidebar / Callout ---- */
+.callout {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  margin: 1.75rem 0;
+}
+
+.callout-title {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+
+.callout p:last-child { margin-bottom: 0; }
+
+/* ---- Folk Type Header ---- */
+.folk-type-header {
+  margin-bottom: 1.5rem;
+}
+
+.folk-type-header h2 {
+  margin-bottom: 0.4rem;
+  margin-top: 0;
+}
+
+.folk-type-die {
+  display: inline-block;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.75rem;
+  color: var(--accent);
+  background: var(--accent-muted);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius);
+  margin-bottom: 0.75rem;
+}
+
+.folk-type-flavor {
+  font-style: italic;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
+}
+
+.folk-type-flavor::before {
+  content: '"';
+  color: var(--accent);
+}
+.folk-type-flavor::after {
+  content: '"';
+  color: var(--accent);
+}
+
+/* ---- Distinction Block ---- */
+.distinction-block {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 1rem 1.25rem;
+  margin: 0.75rem 0;
+  border-radius: var(--radius);
+}
+
+.distinction-name {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.75rem;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.4rem;
+}
+
+/* ---- Mechanic block (inline rules text) ---- */
+.mechanic {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  margin: 1.25rem 0;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+.mechanic strong {
+  color: var(--text);
+}
+
+/* ---- Stat Block (sample characters) ---- */
+.stat-block {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.stat-block h3 {
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+  color: var(--heading);
+}
+
+.stat-block .character-type {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.stat-block .character-flavor {
+  font-style: italic;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.stat-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+  font-size: 0.85rem;
+  align-items: baseline;
+}
+
+.stat-label {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-right: 0.25rem;
+  flex-shrink: 0;
+}
+
+.stat-pill {
+  display: inline-block;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.75rem;
+  padding: 0.1rem 0.45rem;
+  border: 1px solid var(--border-light);
+  border-radius: 2px;
+  color: var(--text-muted);
+}
+
+.stat-pill.high {
+  border-color: var(--gold-muted);
+  color: var(--gold);
+  background: rgba(200, 169, 110, 0.06);
+}
+
+/* ---- Pathway Stage ---- */
+.pathway-stage {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.pathway-stage .stage-label {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+
+.pathway-stage h3 {
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+  color: var(--heading);
+}
+
+.pathway-stage .stage-type {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.pathway-stage ol {
+  margin: 0.75rem 0 1rem 1.25rem;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.pathway-stage ol li { margin-bottom: 0.4rem; }
+
+.pathway-mechanics {
+  background: var(--bg-elevated);
+  border-radius: var(--radius);
+  padding: 0.85rem 1rem;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ---- Fiction Block ---- */
+.fiction {
+  border-left: 2px solid var(--accent-muted);
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  margin: 1.75rem 0;
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.fiction p { margin-bottom: 0.9rem; }
+.fiction p:last-child { margin-bottom: 0; }
+
+/* ---- Faction header ---- */
+.faction-header .faction-motto {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--heading);
+  margin-bottom: 0.5rem;
+}
+
+.faction-header .faction-tagline {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+/* ---- Home Page Hero ---- */
+.hero {
+  padding: 5rem 0 3rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 3rem;
+}
+
+.hero-eyebrow {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  margin-bottom: 1.25rem;
+}
+
+.hero h1 {
+  font-size: 3.2rem;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.hero-subtitle {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+  max-width: 480px;
+}
+
+.hero-cta {
+  display: inline-grid;
+  grid-auto-flow: column;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.7rem 1.4rem;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: background 0.15s ease;
+  margin-right: 0.75rem;
+}
+.hero-cta:hover { background: var(--accent-hover); color: #fff; text-decoration: none; }
+
+.hero-cta.secondary {
+  background: transparent;
+  border: 1px solid var(--border-light);
+  color: var(--text-muted);
+}
+.hero-cta.secondary:hover { border-color: var(--text-muted); color: var(--text); }
+
+/* ---- Section Cards (home) ---- */
+.section-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.section-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  text-decoration: none;
+  transition: border-color 0.15s ease, background 0.15s ease;
+  display: block;
+}
+
+.section-card:hover {
+  border-color: var(--border-light);
+  background: var(--bg-elevated);
+  text-decoration: none;
+}
+
+.section-card .card-eyebrow {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+}
+
+.section-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  color: var(--heading);
+}
+
+.section-card p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* ---- Support Page ---- */
+.support-hero {
+  text-align: center;
+  padding: 4rem 0 3rem;
+}
+
+.support-hero h1 { margin-bottom: 0.75rem; }
+.support-hero p { color: var(--text-muted); max-width: 480px; margin: 0 auto 2rem; }
+
+.kofi-wrapper {
+  display: grid;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+/* ---- Watch List Table ---- */
+.watch-tier {
+  display: inline-block;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.7rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 2px;
+}
+
+.watch-tier.observed { background: rgba(200, 169, 110, 0.1); color: var(--gold); }
+.watch-tier.listed   { background: rgba(155, 35, 53, 0.15); color: #e06070; }
+.watch-tier.condemned{ background: rgba(155, 35, 53, 0.35); color: #ff6070; }
+
+/* ---- Footer ---- */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  line-height: 1.7;
+}
+
+footer a { color: var(--text-muted); }
+footer a:hover { color: var(--text); }
+
+/* ---- Responsive ---- */
+@media (max-width: 640px) {
+  :root { --nav-h: 48px; }
+  .hero h1 { font-size: 2.2rem; }
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.4rem; }
+  .page-wrapper { padding: 2rem 1.25rem 4rem; }
+  .nav-inner { padding: 0 1.25rem; min-height: var(--nav-h); }
+  .nav-title { font-size: 0.9rem; margin-right: 1rem; }
+  .nav-links a { padding: 0.35rem 0.5rem; font-size: 0.7rem; }
+  .section-cards { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 420px) {
+  .nav-inner {
+    grid-template-columns: 1fr;
+    padding: 0.6rem 1.25rem 0.4rem;
+    min-height: 0;
+  }
+  .nav-title { margin-right: 0; margin-bottom: 0.2rem; }
+  .nav-links { padding: 0 0 0.5rem; }
+}
+
+/* ---- Utility ---- */
+.mono { font-family: "Courier New", Courier, monospace; font-size: 0.85em; }
+.muted { color: var(--text-muted); }
+.gold  { color: var(--gold); }
+.accent { color: var(--accent); }
